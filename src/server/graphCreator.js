@@ -19,8 +19,6 @@ const getGraphData = () => {
         edges.push(newEdge);
     }
 
-    console.log(nodes);
-    console.log(edges);
     return {
         nodes: nodes,
         edges: edges
