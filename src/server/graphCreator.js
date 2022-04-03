@@ -1,9 +1,9 @@
+// Import the classes
 let Edge = require("./objects/Edge");
 let Node = require("./objects/Node");
 
-
 const getGraphData = () => {
-    // Dummy data creation
+    // Dummy data creation – creates a random number of nodes and edges and connects nodes randomly
     let nodes = []
     let edges = []
 
@@ -27,6 +27,7 @@ const getGraphData = () => {
 
 let data = getGraphData();
 
+// Export the data so that it can be used in server.js
 module.exports = {
     data
 };

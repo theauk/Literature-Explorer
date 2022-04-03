@@ -1,5 +1,6 @@
 // Fetch the graph data from the backend
 const getGraph = () => {
+    // API GET call to the backend
     fetch("http://localhost:8080/get-graph", {
         method: "GET",
         mode: "cors",
@@ -16,18 +17,18 @@ const getGraph = () => {
 }
 
 const createGraph = (graphData) => {
-    console.log("21: " + graphData);
-    // create a network
+
+    // Create a network
     var container = document.getElementById('graph');
 
-    // provide the data in the vis format
+    // Provide the data in the vis format
     var data = {
         nodes: graphData['nodes'],
         edges: graphData['edges']
     };
     var options = {};
 
-    // initialize your network!
+    // Initialize the network
     var network = new vis.Network(container, data, options);
 }
 
