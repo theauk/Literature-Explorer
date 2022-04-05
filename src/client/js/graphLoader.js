@@ -26,11 +26,40 @@ const createGraph = (graphData) => {
         nodes: graphData['nodes'],
         edges: graphData['edges']
     };
-    var options = {};
+    var options = {
+        nodes: {
+            shape: "circle",
+            scaling: {
+              min: 10,
+              max: 30,
+            },
+            font: {
+              size: 15,
+              face: "Helvetica",
+            },
+            color: {
+                border: '#000000',
+                background: '#ede9da',
+                border:  '#87A980',
+                highlight: {
+                    border: '#2B7CE9',
+                    background: '#87A980'
+                },
+            },
+          },
+          edges: {
+            width: 0.15,
+            smooth: {
+              type: "continuous",
+            },
+          },
+          autoResize: true,
+    };
 
+    
     // Initialize the network
     var network = new vis.Network(container, data, options);
-
+    
     network.on("click", function (params) {
         params.event = "[original event]";
 
@@ -43,6 +72,7 @@ const createGraph = (graphData) => {
         var sidebar = document.getElementById("paper-title").innerText = paper['label'];
         var sidebar = document.getElementById("paper-id").innerText = "ID " + paper['id'];
 
+        
         console.log(
             "click event, getNodeAt returns node with ID: " + this.getNodeAt(params.pointer.DOM)
         );

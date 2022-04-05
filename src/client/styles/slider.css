@@ -6,7 +6,7 @@
 	border:none;
 	outline:none;
 	background:#ede9da;
-	font-size: 20px;
+	font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
 	color:rgb(76, 70, 70);
 	cursor: pointer;
 	margin-left: 10px;
