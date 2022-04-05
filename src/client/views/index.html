@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./styles/graph.css">
     <link rel="stylesheet" href="./styles/sidebar.css">
     <link rel="stylesheet" href="./styles/container.css">
+    <link rel="stylesheet" href="./styles/slider.css">
 </head>
 
 <body>
@@ -20,15 +21,22 @@
                 <i><b>Logo</b></i>
                 </font>
         </div>
+        <div class="slider">
+            <button class="btn" onclick="prev()">Prev</button>
+            <button class="btn" onclick="next()">Next</button>
+        </div>
         <div class="container" onclick="myFunction(this)">
             <div class="bar1"></div>
             <div class="bar2"></div>
             <div class="bar3"></div>
         </div>
+
         <script>
             function myFunction(x) {
               x.classList.toggle("change");
             }
+            function prev(){}
+            function next(){}
         </script>
     </header>
 

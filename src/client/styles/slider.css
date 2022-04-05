@@ -1,0 +1,20 @@
+.slider{
+	display:flex;
+	
+}
+.btn{
+	border:none;
+	outline:none;
+	background:#ede9da;
+	font-size: 20px;
+	color:rgb(76, 70, 70);
+	cursor: pointer;
+	margin-left: 10px;
+	width: 60px;
+    height: 25px;
+	display: flex;			 
+}
+
+.btn:hover{
+	background: rgb(181, 181, 146);
+}
