@@ -34,7 +34,7 @@ const createGraph = (graphData) => {
               max: 30,
             },
             font: {
-              size: 15,
+              size: 16,
               face: "Helvetica",
             },
             color: {
@@ -42,7 +42,7 @@ const createGraph = (graphData) => {
                 background: '#ede9da',
                 border:  '#87A980',
                 highlight: {
-                    border: '#2B7CE9',
+                    border: '#378805',
                     background: '#87A980'
                 },
             },
@@ -72,7 +72,7 @@ const createGraph = (graphData) => {
         var sidebar = document.getElementById("paper-title").innerText = paper['label'];
         var sidebar = document.getElementById("paper-id").innerText = "ID " + paper['id'];
 
-        
+
         console.log(
             "click event, getNodeAt returns node with ID: " + this.getNodeAt(params.pointer.DOM)
         );
