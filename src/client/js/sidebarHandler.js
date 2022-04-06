@@ -1,0 +1,5 @@
+const sidebarHandler = () => {
+    
+}
+
+export { sidebarHandler }
