@@ -1,29 +1,41 @@
 #sidebar {
     border: 1px solid lightgray;
-    height: 100%; 
-    width: 0; 
-    position: fixed; 
-    z-index: 1; 
-    top: 46px;
-    right: 0;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    padding-top: 20px;
     background-color: #ede9da;
-    padding-top: 20px; 
-    transition: 0.5s; 
     font: 16px Georgia, serif;
-  }
-  
-.paper-info {
-    min-height: 200px;
-  }
-
-#paper-title{
-    min-height: 50px;
-    font: 18px Georgia, serif;
-
+    right: 0;
+    top: 42px;
+    transition: 0.5s;
 }
 
-#paper-id{
-    min-height: 50px;
-    font: 16px Georgia, serif;
+.paper-info
+{
+    margin-top: 30px;
+    margin-left: 20px;
+    font: 16px Bookman, URW Bookman L, serif;
+    font-weight: 500;
+}
 
+.closebtn{
+	border: 1px solid #87A980;
+    width: 10px;
+    border-radius: 15%;
+	outline:none;
+	background:#87A980;
+	font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+	color:#ede9da;
+	cursor: pointer;
+	margin-left: 20px;
+	width: 60px;
+    height: 25px;
+	display: flex;		
+    position: absolute;	 
+}
+
+.closebtn:hover{
+	background: rgb(181, 181, 146);
 }
