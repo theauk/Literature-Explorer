@@ -1,9 +1,25 @@
-#sidebar {
+.sidebar {
     border: 1px solid lightgray;
-    height: 100%;
-    min-width: 250px;
-    display: none;
-    padding: 10px 10px;
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
     background-color: #ede9da;
+    padding-top: 20px; 
+    transition: 0.5s; 
     font: 16px Georgia, serif;
+  }
+  
+.paper-info {
+    min-height: 200px;
+  }
+
+#paper-title{
+    min-height: 50px;
+}
+
+#paper-id{
+    min-height: 50px;
 }

@@ -11,5 +11,6 @@ main, section {
 
 main {
     display: flex;
+    transition: margin-right .5s;
 }
 

@@ -61,8 +61,9 @@ const createGraph = (graphData) => {
         params.event = "[original event]";
 
         // Show the sidebar when a node is clicked
-        var sidebar = document.getElementById("sidebar");
-        sidebar.style.display = "block";
+        var sidebar = document.getElementById("mySidebar");
+        sidebar.style.width = "250px"
+        document.getElementById("main").style.marginLeft = "250px";
 
         // Update the sidebar with information about the clicked node 
         const paper = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
