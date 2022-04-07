@@ -61,7 +61,7 @@ const createGraph = (graphData) => {
         params.event = "[original event]";
 
         // Show the sidebar when a node is clicked
-        var sidebar = document.getElementById("mySidebar");
+        var sidebar = document.getElementById("sidebar");
         sidebar.style.width = "250px"
         document.getElementById("main").style.marginLeft = "250px";
 
