@@ -49,11 +49,8 @@ const createGraph = (graphData) => {
           },
           edges: {
             width: 0.15,
-            smooth: {
-              type: "continuous",
-            },
+            length: 240,
           },
-          autoResize: true,
     };
 
     
