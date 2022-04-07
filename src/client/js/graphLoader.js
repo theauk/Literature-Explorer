@@ -49,11 +49,8 @@ const createGraph = (graphData) => {
           },
           edges: {
             width: 0.15,
-            smooth: {
-              type: "continuous",
-            },
+            length: 240,
           },
-          autoResize: true,
     };
 
     
@@ -65,14 +62,13 @@ const createGraph = (graphData) => {
 
         // Show the sidebar when a node is clicked
         var sidebar = document.getElementById("sidebar");
-        sidebar.style.display = "block";
+        sidebar.style.width = "250px";
 
         // Update the sidebar with information about the clicked node 
         const paper = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
         var sidebar = document.getElementById("paper-title").innerText = paper['label'];
         var sidebar = document.getElementById("paper-id").innerText = "ID " + paper['id'];
-
-
+        
         console.log(
             "click event, getNodeAt returns node with ID: " + this.getNodeAt(params.pointer.DOM)
         );

@@ -18,7 +18,7 @@
     <header>
         <div class="logo">
             <font color="#ede9da">
-                <i><b>Logo</b></i>
+                <i><b>Literature Explorer</b></i>
             </font>
         </div>
         <div class="slider">
@@ -46,7 +46,7 @@
         </section>
         <section>
             <div id="sidebar">
-                <button class="btn">Close</button>
+                <button id = "cbtn" class="closebtn" onclick="sidebarclose()">close</button>
                 <div class="paper-info">
                     <div id="paper-title"></div>
                     <div id="paper-id"></div>
@@ -54,6 +54,13 @@
             </div>
         </section>
     </main>
+    <script>
+        function sidebarclose()
+        {
+            document.getElementById("sidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
 </body>
 
