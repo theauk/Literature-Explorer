@@ -1,5 +1,0 @@
-const sidebarHandler = () => {
-    
-}
-
-export { sidebarHandler }
