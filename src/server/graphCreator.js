@@ -1,6 +1,6 @@
 // Import the classes
-let Edge = require("./objects/Edge");
-let Node = require("./objects/Node");
+let Edge = require("./classes/Edge");
+let Node = require("./classes/Node");
 
 const getGraphData = () => {
     // Dummy data creation – creates a random number of nodes and edges and connects nodes randomly
