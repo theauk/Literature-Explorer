@@ -17,7 +17,7 @@ const getInitialGraph = () => {
         .catch(error => console.log(error))
 }
 
-const getNodeData = (id) => {
+const getNodeDataById = async (id) => {
     console.log("http://localhost:8080/get-graph?val=" + id);
     fetch("http://localhost:8080/get-graph?val=" + id, {
         method: "GET",
@@ -29,8 +29,8 @@ const getNodeData = (id) => {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            createGraph(data);
+            console.log("line 32 id: ", id + " data ", data);
+            return data;
         })
         .catch(error => console.log(error))
 }
@@ -45,6 +45,7 @@ const createGraph = (graphData) => {
         nodes: graphData['nodes'],
         edges: graphData['edges']
     };
+
     const options = {
         nodes: {
             shape: "circle",
@@ -84,24 +85,22 @@ const createGraph = (graphData) => {
         sidebar.style.width = "250px";
 
         // Update the sidebar with information about the clicked node 
-        const paper = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
-        console.log(paper);
-        if (paper != null) {
-            document.getElementById("paper-title").innerText = paper['label'];
-            document.getElementById("paper-id").innerText = "ID " + paper['id'];
+        const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
+        console.log(paperClicked);
+        if (paperClicked != null) {
+            document.getElementById("paper-title").innerText = paperClicked['label'];
+            document.getElementById("paper-id").innerText = "ID " + paperClicked['id'];
         }
-
-
     });
 
-    network.on("doubleClick", function(params){
+    network.on("doubleClick", function (params) {
         params.event = "doubeclick"
-        console.log(params.event)
+
         // get node data
-        const nodeData = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
-        console.log(nodeData.id);
-        const newData = getNodeData(nodeData.id);
-        network = new vis.Network(container, newData, options);
+        const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
+        const newGraphData = getNodeDataById(paperClicked);
+        console.log("line 102, " + newGraphData)
+        createGraph(newGraphData);
     });
 }
 
