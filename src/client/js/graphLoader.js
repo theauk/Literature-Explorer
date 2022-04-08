@@ -11,6 +11,7 @@ const getInitialGraph = () => {
     })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             createGraph(data);
         })
         .catch(error => console.log(error))
@@ -28,6 +29,7 @@ const getNodeData = (id) => {
     })
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             createGraph(data);
         })
         .catch(error => console.log(error))

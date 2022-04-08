@@ -2,7 +2,7 @@
 let Edge = require("./objects/Edge");
 let Node = require("./objects/Node");
 
-const getGraphData = () => {
+const getRandomGraphData = () => {
     // Dummy data creation – creates a random number of nodes and edges and connects nodes randomly
     let nodes = []
     let edges = []
@@ -17,11 +17,6 @@ const getGraphData = () => {
         edges.push(newEdge);
     }
 
-    /*for (let i = 1; i < numberOfNodes; i++) {
-        let newEdge = new Edge(i,0, i);
-        edges.push(newEdge);
-    }*/
-
     return {
         nodes: nodes,
         edges: edges
@@ -31,7 +26,7 @@ const getGraphData = () => {
 const getGraphDataId = (id) =>{
     let nodes = []
     let edges = []
-    console.log(id);
+    console.log("ggdi 34", id);
     let mainNode = new Node(id, "Paper " + id);
     nodes.push(mainNode);
     let numberOfNodes = Math.floor(Math.random() * 20) + 1;
@@ -48,10 +43,7 @@ const getGraphDataId = (id) =>{
     }
 };
 
-
-let data = getGraphData();
-
 module.exports = {
-    data,
+    getRandomGraphData,
     getGraphDataId
 };
