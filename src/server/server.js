@@ -6,9 +6,9 @@ const app = express()
 app.use(express.static('dist'))
 
 // Get the graph information from the external file
-let graphFile = require("./graphCreator");
-let graphData = graphFile.data;
-let graphData_id = graphFile.data_id
+let graphData = require("./graphCreator");
+let randomGraphData = graphData.data;
+
 // For cross origin allowance (so that the API works correctly)
 app.use(cors());
 app.use(function (req, res, next) {
@@ -31,9 +31,9 @@ app.listen(8080, function () {
 // Get the graph data when the front end makes a GET request to /get-graph
 app.get("/get-graph", (req, res) => {
     const id = req.query.val;
-    if(req.query.val === ""){
-        res.send(JSON.stringify(graphData));
-    }else{
-        res.send(JSON.stringify(data_id(id)));
+    if (req.query.val === "") {
+        res.send(JSON.stringify(randomGraphData));
+    } else {
+        res.send(JSON.stringify(graphData.getGraphDataId(id)));
     }
 })

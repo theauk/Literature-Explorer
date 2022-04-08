@@ -50,9 +50,8 @@ const getGraphDataId = (id) =>{
 
 
 let data = getGraphData();
-let data_id = getGraphDataId;
-// Export the data so that it can be used in server.js
+
 module.exports = {
-    data, 
-    data_id
+    data,
+    getGraphDataId
 };
