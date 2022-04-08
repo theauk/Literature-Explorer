@@ -1,7 +1,24 @@
 // Fetch the graph data from the backend
-const getGraph = () => {
+const getInitialGraph = () => {
     // API GET call to the backend
-    fetch("http://localhost:8080/get-graph", {
+    fetch(`http://localhost:8080/get-graph`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-type": "application/json"
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            createGraph(data);
+        })
+        .catch(error => console.log(error))
+}
+
+const getNodeData = (id) => {
+    console.log("http://localhost:8080/get-graph?val=" + id);
+    fetch("http://localhost:8080/get-graph?val=" + id, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -55,7 +72,7 @@ const createGraph = (graphData) => {
 
 
     // Initialize the network
-    const network = new vis.Network(container, data, options);
+    let network = new vis.Network(container, data, options);
 
     network.on("click", function (params) {
         params.event = "[original event]";
@@ -66,11 +83,24 @@ const createGraph = (graphData) => {
 
         // Update the sidebar with information about the clicked node 
         const paper = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
+        console.log(paper);
         if (paper != null) {
             document.getElementById("paper-title").innerText = paper['label'];
             document.getElementById("paper-id").innerText = "ID " + paper['id'];
         }
+
+
+    });
+
+    network.on("doubleClick", function(params){
+        params.event = "doubeclick"
+        console.log(params.event)
+        // get node data
+        const nodeData = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
+        console.log(nodeData.id);
+        const newData = getNodeData(nodeData.id);
+        network = new vis.Network(container, newData, options);
     });
 }
 
-export {getGraph}
+export {getInitialGraph}
