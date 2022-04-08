@@ -30,5 +30,7 @@ app.listen(8080, function () {
 
 // Get the graph data when the front end makes a GET request to /get-graph
 app.get("/get-graph", (req, res) => {
+    console.log("hellp")
     res.send(JSON.stringify(graphData));
 });
+

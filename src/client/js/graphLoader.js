@@ -68,7 +68,8 @@ const createGraph = (graphData) => {
         const paper = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
         var sidebar = document.getElementById("paper-title").innerText = paper['label'];
         var sidebar = document.getElementById("paper-id").innerText = "ID " + paper['id'];
-        
+        // change attribute names here
+
         console.log(
             "click event, getNodeAt returns node with ID: " + this.getNodeAt(params.pointer.DOM)
         );
