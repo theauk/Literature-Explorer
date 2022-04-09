@@ -1,10 +1,10 @@
 class Edge {
-    id
+
     from
     to
 
-    constructor( id,from, to) {
-        this.id = id
+    constructor(from, to) {
+
         this.from = from;
         this.to = to;
     }

@@ -6,8 +6,7 @@ const app = express()
 app.use(express.static('dist'))
 
 // Get the graph information from the external file
-let graphFile = require("./graphCreator");
-let graphData = graphFile.data;
+let graphData = require("./graphCreator");
 
 // For cross origin allowance (so that the API works correctly)
 app.use(cors());
@@ -32,5 +31,13 @@ app.listen(8080, function () {
 app.get("/get-graph", (req, res) => {
     console.log("hellp")
     res.send(JSON.stringify(graphData));
+    const id = req.query.val;
+    if (req.query.val === undefined) {
+        res.send(JSON.stringify(graphData.getRandomGraphData()));
+    } else {
+        console.log("get-graph-id backend with id, " + id)
+        res.send(JSON.stringify(graphData.getGraphDataId(id)));
+    }
 });
+
 

@@ -5,63 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.2">
     <meta charset="utf-8">
     <title>Literature Explorer</title>
-    <link rel="stylesheet" href="./styles/base.css">
-    <link rel="stylesheet" href="./styles/header.css">
-    <link rel="stylesheet" href="./styles/graph.css">
-    <link rel="stylesheet" href="./styles/sidebar.css">
-    <link rel="stylesheet" href="./styles/container.css">
-    <link rel="stylesheet" href="./styles/slider.css">
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">
-            <font color="#ede9da">
-                <i><b>Literature Explorer</b></i>
-            </font>
-        </div>
-        <div class="slider">
-            <button class="btn" onclick="prev()">Prev</button>
-            <button class="btn" onclick="next()">Next</button>
-        </div>
-        <div class="container" onclick="myFunction(this)">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-        </div>
+<header>
+    <div class="logo">
+        <i><b>Literature Explorer</b></i>
+    </div>
+    <div class="slider">
+        <button class="btn" onclick="prev()">Prev</button>
+        <button class="btn" onclick="next()">Next</button>
+    </div>
+    <div class="container" onclick="myFunction(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
 
-        <script>
-            function myFunction(x) {
-                x.classList.toggle("change");
-            }
-            function prev() { }
-            function next() { }
-        </script>
-    </header>
-
-    <main>
-        <section>
-            <div id="graph"></div>
-        </section>
-        <section>
-            <div id="sidebar">
-                <button id = "cbtn" class="closebtn" onclick="sidebarclose()">close</button>
-                <div class="paper-info">
-                    <div id="paper-title"></div>
-                    <div id="paper-id"></div>
-                </div>
-            </div>
-        </section>
-    </main>
     <script>
-        function sidebarclose()
-        {
-            document.getElementById("sidebar").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
+        function myFunction(x) {
+            x.classList.toggle("change");
+        }
+
+        function prev() {
+        }
+
+        function next() {
         }
     </script>
-    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</header>
+
+<main>
+    <section>
+        <div id="graph"></div>
+    </section>
+    <section>
+        <div id="sidebar">
+            <button id="cbtn" class="closebtn" onclick="sidebarclose()">close</button>
+            <div class="paper-info">
+                <div id="paper-title"></div>
+                <div id="paper-id"></div>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+    function sidebarclose() {
+        document.getElementById("sidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>
+<script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
 </body>
 
 </html>
