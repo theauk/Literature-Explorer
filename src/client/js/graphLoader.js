@@ -99,9 +99,7 @@ const createGraph =  (graphData) => {
         params.event = "doubeclick"
         // get node data
         const paperClicked =  graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
-        console.log('w',paperClicked);
         const newGraphData = await getNodeDataById(paperClicked.id);
-        console.log('niggers', newGraphData.edges);
         const newdata = {
             nodes: newGraphData['nodes'],
             edges: newGraphData['edges']
