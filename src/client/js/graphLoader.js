@@ -18,8 +18,9 @@ const getInitialGraph = () => {
 }
 
 const getNodeDataById = async (id) => {
-    console.log("http://localhost:8080/get-graph?val=" + id);
-    fetch("http://localhost:8080/get-graph?val=" + id, {
+    let returnData;
+    console.log(`http://localhost:8080/get-graph?val=${id}`);
+    await fetch(`http://localhost:8080/get-graph?val=${id}`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -28,14 +29,15 @@ const getNodeDataById = async (id) => {
         }
     })
         .then(response => response.json())
-        .then(data => {
+        .then(data =>  {
             console.log("line 32 id: ", id + " data ", data);
-            return data;
+            returnData = data;
         })
-        .catch(error => console.log(error))
-}
+        .catch(error => console.log(error));
 
-const createGraph = (graphData) => {
+    return returnData;
+}
+const createGraph =  (graphData) => {
 
     // Create a network
     const container = document.getElementById('graph');
@@ -92,15 +94,20 @@ const createGraph = (graphData) => {
             document.getElementById("paper-id").innerText = "ID " + paperClicked['id'];
         }
     });
-
-    network.on("doubleClick", function (params) {
+    
+    network.on("doubleClick", async function (params) {
         params.event = "doubeclick"
-
         // get node data
-        const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
-        const newGraphData = getNodeDataById(paperClicked);
-        console.log("line 102, " + newGraphData)
-        createGraph(newGraphData);
+        const paperClicked =  graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
+        console.log('w',paperClicked);
+        const newGraphData = await getNodeDataById(paperClicked.id);
+        console.log('niggers', newGraphData.edges);
+        const newdata = {
+            nodes: newGraphData['nodes'],
+            edges: newGraphData['edges']
+        };
+
+        network.setData(newdata);
     });
 }
 

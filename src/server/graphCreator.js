@@ -21,13 +21,13 @@ const getRandomGraphData = () => {
         nodes: nodes,
         edges: edges
     }
-}
+};
 
 const getGraphDataId = (id) =>{
     let nodes = []
     let edges = []
     console.log("ggdi 34", id);
-    let mainNode = new Node(id, "Paper " + id);
+    let mainNode = new Node(0, "Paper " + id);
     nodes.push(mainNode);
     let numberOfNodes = Math.floor(Math.random() * 20) + 1;
 
@@ -37,6 +37,7 @@ const getGraphDataId = (id) =>{
         let newEdge = new Edge(i, 0, i);
         edges.push(newEdge);
     }
+
     return {
         nodes: nodes,
         edges: edges
