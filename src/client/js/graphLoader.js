@@ -1,3 +1,6 @@
+// Track the last clicked node
+let lastClickedPaperId = null;
+
 // Fetch the initial graph data from the backend
 const getInitialGraph = () => {
     // API GET call to the backend
@@ -11,6 +14,7 @@ const getInitialGraph = () => {
     })
         .then(response => response.json())
         .then(data => {
+            lastClickedPaperId = data["mainPaper"].id
             createGraph(data);
         })
         .catch(error => console.log(error))
@@ -29,6 +33,7 @@ const getNodeDataById = async (id) => {
     })
         .then(response => response.json())
         .then(data => {
+            lastClickedPaperId = id;
             returnData = data;
         })
         .catch(error => console.log(error));
@@ -103,14 +108,17 @@ const createGraph = (graphData) => {
 
         // Get node data
         const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
-        const newGraphData = await getNodeDataById(paperClicked.id);
-        const newData = {
-            nodes: newGraphData['nodes'],
-            edges: newGraphData['edges']
-        };
+        if (lastClickedPaperId != paperClicked.id) {
+            const newGraphData = await getNodeDataById(paperClicked.id);
+            const newData = {
+                nodes: newGraphData['nodes'],
+                edges: newGraphData['edges']
+            };
 
-        network.setData(newData);
-        graphData = newData;
+            network.setData(newData);
+            graphData = newData;
+        }
+        lastClickedPaperId = paperClicked.id;
     });
 }
 
