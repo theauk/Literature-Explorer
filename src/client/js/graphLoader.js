@@ -1,4 +1,4 @@
-// Fetch the graph data from the backend
+// Fetch the initial graph data from the backend
 const getInitialGraph = () => {
     // API GET call to the backend
     fetch(`http://localhost:8080/get-graph`, {
@@ -11,15 +11,14 @@ const getInitialGraph = () => {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             createGraph(data);
         })
         .catch(error => console.log(error))
 }
 
+// Fetch a graph based on an id
 const getNodeDataById = async (id) => {
     let returnData;
-    console.log(`http://localhost:8080/get-graph?val=${id}`);
     await fetch(`http://localhost:8080/get-graph?val=${id}`, {
         method: "GET",
         mode: "cors",
@@ -29,25 +28,25 @@ const getNodeDataById = async (id) => {
         }
     })
         .then(response => response.json())
-        .then(data =>  {
-            console.log("line 32 id: ", id + " data ", data);
+        .then(data => {
             returnData = data;
         })
         .catch(error => console.log(error));
 
     return returnData;
 }
-const createGraph =  (graphData) => {
 
-    // Create a network
+// Create the graph that should be displayed
+const createGraph = (graphData) => {
+
+    // Create a network and the data
     const container = document.getElementById('graph');
-
-    // Provide the data in the vis format
     const data = {
         nodes: graphData['nodes'],
         edges: graphData['edges']
     };
 
+    // Set the styling options
     const options = {
         nodes: {
             shape: "circle",
@@ -76,9 +75,16 @@ const createGraph =  (graphData) => {
     };
 
 
-    // Initialize the network
+    // Initialize the vis.js network
     let network = new vis.Network(container, data, options);
 
+    // Handle clicks
+    handleSingleClick(network, graphData);
+    handleDoubleClick(network, graphData);
+}
+
+const handleSingleClick = (network, graphData) => {
+    // Handle single clicks on nodes
     network.on("click", function (params) {
         params.event = "[original event]";
 
@@ -86,9 +92,8 @@ const createGraph =  (graphData) => {
         const sidebar = document.getElementById("sidebar");
         sidebar.style.width = "250px";
 
-        // Update the sidebar with information about the clicked node 
+        // Update the sidebar with information about the clicked node
         const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
-        console.log(paperClicked);
         if (paperClicked != null) {
             document.getElementById("paper-title").innerText = paperClicked['label'];
             document.getElementById("paper-id").innerText = "ID " + paperClicked['id'];
@@ -98,19 +103,22 @@ const createGraph =  (graphData) => {
             document.getElementById("paper-description").innerText = "Description: ";
         }
     });
-    
+}
+
+function handleDoubleClick(network, graphData) {
     network.on("doubleClick", async function (params) {
-        params.event = "doubeclick"
-        // get node data
-        const paperClicked =  graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
+        params.event = "doubleClick"
+
+        // Get node data
+        const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
         const newGraphData = await getNodeDataById(paperClicked.id);
-        const newdata = {
+        const newData = {
             nodes: newGraphData['nodes'],
             edges: newGraphData['edges']
         };
 
-        network.setData(newdata);
-        graphData=newdata;
+        network.setData(newData);
+        graphData = newData;
     });
 }
 
