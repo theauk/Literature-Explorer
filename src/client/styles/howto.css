@@ -1,11 +1,11 @@
 .popup {
     position: relative;
-    display: inline-block;
+    display: block;
     cursor: pointer;
-    box-sizing: border-box;  /* <------- required */
-    width: 5%;  /* <------------------- required */
-    float: left; 
-    margin-right: 15px;
+    box-sizing: border-box;
+    width: 5%; 
+    float: left;
+    margin-right: 10px;
     font: 22px "Lucida Grande", Helvetica, Arial, sans-serif;
     color: #ede9da;
   }
