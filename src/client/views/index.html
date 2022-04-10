@@ -10,14 +10,13 @@
 <body>
 
 <header>
-    <div class="UpperLeftHeader">
+    <div class="upperLeftHeader">
         <div class="popup" onclick="openPopup()"><b>?</b>
             <span class="popup-text" id="myPopup">Welcome to the literature explorer! <br>
                 Click on a node to learn more about the paper, <br>
                 or double-click on a node to generate its graph.
                 <br> <br>
                 Click anywhere on this pop-up to close it.
-
             </span>
         </div>
         <div class="logo">
@@ -29,10 +28,13 @@
         <button class="btn" onclick="prev()">Prev</button>
         <button class="btn" onclick="next()">Next</button>
     </div>
-    <div class="container" onclick="menuBarMorph(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
+
+    <div class="menu">
+        <div class="menuButton" onclick="menuBarMorph(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
     </div>
 
     <script>

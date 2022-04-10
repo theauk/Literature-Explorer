@@ -1,4 +1,9 @@
-.container {
+.menu {
+    display: flex;
+    justify-content: right;
+}
+
+.menuButton {
     display: inline-block;
     cursor: pointer;
     margin-left: 50px;

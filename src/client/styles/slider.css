@@ -1,5 +1,6 @@
 .slider {
     display: flex;
+    justify-content: center;
 }
 
 .btn {
