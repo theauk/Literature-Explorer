@@ -10,9 +10,21 @@
 <body>
 
 <header>
-    <div class="logo">
-        <i><b>Literature Explorer</b></i>
+    <div class = "UpperLeftHeader">
+        <div class="popup" onclick="myFunction()"><b>?</b>
+            <span class="popuptext" id="myPopup">Welcome to the literature explorer! <br>
+                Click on a node to learn more about the paper, <br>
+                or double-click on a node to generate its graph.
+                <br> <br>
+                Click anywhere on this pop-up to close it.
+
+            </span>
+        </div>
+        <div class="logo">
+            <i><b>Literature Explorer</b></i>
+        </div>
     </div>
+    
     <div class="slider">
         <button class="btn" onclick="prev()">Prev</button>
         <button class="btn" onclick="next()">Next</button>
@@ -51,6 +63,10 @@
     </section>
 </main>
 <script>
+    function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
     function sidebarclose() {
         document.getElementById("sidebar").style.width = "0";
         document.getElementById("main").style.marginLeft = "0";

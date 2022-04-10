@@ -8,6 +8,7 @@ import './styles/graph.css'
 import './styles/sidebar.css'
 import './styles/container.css'
 import './styles/slider.css'
+import './styles/howto.css'
 
 // Display the graph
 getInitialGraph();
