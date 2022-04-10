@@ -39,3 +39,43 @@
 .closebtn:hover{
 	background: rgb(181, 181, 146);
 }
+
+.view{
+	border: 2px solid #87A980;
+    border-radius: 15%;
+	outline:none;
+	background:#87A980;
+	font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+	color:#ede9da;
+	cursor: pointer;
+	margin-left: 20px;
+	width: 170px;
+    height: 40px;
+	display: flex;
+    position: absolute;
+    margin-top: 500px;
+}
+
+.view:hover{
+	background: rgb(181, 181, 146);
+}
+
+.cite{
+	border: 2px solid #87A980;
+    border-radius: 15%;
+	outline:none;
+	background:#87A980;
+	font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+	color:#ede9da;
+	cursor: pointer;
+	margin-left: 20px;
+	width: 170px;
+    height: 40px;
+	display: flex;
+    position: absolute;
+    margin-top: 550px;
+}
+
+.cite:hover{
+	background: rgb(181, 181, 146);
+}

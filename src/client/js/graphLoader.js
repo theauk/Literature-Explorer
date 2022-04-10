@@ -92,6 +92,10 @@ const createGraph =  (graphData) => {
         if (paperClicked != null) {
             document.getElementById("paper-title").innerText = paperClicked['label'];
             document.getElementById("paper-id").innerText = "ID " + paperClicked['id'];
+            document.getElementById("paper-authors").innerText = "Authors: ";
+            document.getElementById("paper-year").innerText = "Year: ";
+            document.getElementById("paper-references").innerText = "Number of references: ";
+            document.getElementById("paper-description").innerText = "Description: ";
         }
     });
     
