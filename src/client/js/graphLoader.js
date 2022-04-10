@@ -77,12 +77,6 @@ const createGraph = (graphData) => {
     // Initialize the vis.js network
     let network = new vis.Network(container, data, options);
 
-    // Handle clicks
-    handleSingleClick(network, graphData);
-    handleDoubleClick(network, graphData);
-}
-
-const handleSingleClick = (network, graphData) => {
     // Handle single clicks on nodes
     network.on("click", function (params) {
         params.event = "[original event]";
@@ -102,9 +96,8 @@ const handleSingleClick = (network, graphData) => {
             document.getElementById("paper-description").innerText = "Description: ";
         }
     });
-}
 
-function handleDoubleClick(network, graphData) {
+    // Handle double clicks
     network.on("doubleClick", async function (params) {
         params.event = "doubleClick"
 
@@ -121,4 +114,6 @@ function handleDoubleClick(network, graphData) {
     });
 }
 
-export {getInitialGraph}
+export {
+    getInitialGraph
+}
