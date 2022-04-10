@@ -106,6 +106,7 @@ const createGraph =  (graphData) => {
         };
 
         network.setData(newdata);
+        graphData=newdata;
     });
 }
 
