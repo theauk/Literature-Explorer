@@ -23,7 +23,7 @@ const getRandomGraphData = () => {
     }
 };
 
-const getGraphDataId = (id) =>{
+const getGraphDataId = (id) => {
     let nodes = []
     let edges = []
     console.log("ggdi 34", id);

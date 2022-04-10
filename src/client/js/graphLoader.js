@@ -74,7 +74,6 @@ const createGraph = (graphData) => {
         },
     };
 
-
     // Initialize the vis.js network
     let network = new vis.Network(container, data, options);
 

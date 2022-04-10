@@ -12,70 +12,59 @@
     transition: 0.5s;
 }
 
-.paper-info
-{
+.paper-info {
     margin-top: 30px;
     margin-left: 20px;
     font: 16px Bookman, URW Bookman L, serif;
     font-weight: 500;
 }
 
-.closebtn{
-	border: 1px solid #87A980;
-    width: 10px;
+.closebtn {
+    border: 1px solid #87A980;
     border-radius: 15%;
-	outline:none;
-	background:#87A980;
-	font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-	color:#ede9da;
-	cursor: pointer;
-	margin-left: 20px;
-	width: 60px;
+    outline: none;
+    background: #87A980;
+    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: #ede9da;
+    cursor: pointer;
+    margin-left: 20px;
+    width: 60px;
     height: 25px;
-	display: flex;		
-    position: absolute;	 
-}
-
-.closebtn:hover{
-	background: rgb(181, 181, 146);
-}
-
-.view{
-	border: 2px solid #87A980;
-    border-radius: 15%;
-	outline:none;
-	background:#87A980;
-	font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-	color:#ede9da;
-	cursor: pointer;
-	margin-left: 20px;
-	width: 170px;
-    height: 40px;
-	display: flex;
+    display: flex;
     position: absolute;
+}
+
+.closebtn:hover {
+    background: rgb(181, 181, 146);
+}
+
+.view, .cite {
+    border: 2px solid #87A980;
+    border-radius: 15%;
+    outline: none;
+    background: #87A980;
+    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: #ede9da;
+    cursor: pointer;
+    margin-left: 20px;
+    width: 170px;
+    height: 40px;
+    display: flex;
+    position: absolute;
+}
+
+.view {
     margin-top: 500px;
 }
 
-.view:hover{
-	background: rgb(181, 181, 146);
+.view:hover {
+    background: rgb(181, 181, 146);
 }
 
-.cite{
-	border: 2px solid #87A980;
-    border-radius: 15%;
-	outline:none;
-	background:#87A980;
-	font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-	color:#ede9da;
-	cursor: pointer;
-	margin-left: 20px;
-	width: 170px;
-    height: 40px;
-	display: flex;
-    position: absolute;
+.cite {
     margin-top: 550px;
 }
 
-.cite:hover{
-	background: rgb(181, 181, 146);
+.cite:hover {
+    background: rgb(181, 181, 146);
 }
