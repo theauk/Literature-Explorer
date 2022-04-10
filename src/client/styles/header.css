@@ -9,4 +9,6 @@ header {
 
 .logo {
     color: #ede9da;
+    overflow: hidden;
+    float: left;
 }
