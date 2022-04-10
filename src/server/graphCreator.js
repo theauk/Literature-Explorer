@@ -26,7 +26,6 @@ const getRandomGraphData = () => {
 const getGraphDataId = (id) => {
     let nodes = []
     let edges = []
-    console.log("ggdi 34", id);
     let mainNode = new Node(0, "Paper " + id);
     nodes.push(mainNode);
     let numberOfNodes = Math.floor(Math.random() * 20) + 1;

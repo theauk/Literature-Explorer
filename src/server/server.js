@@ -33,7 +33,6 @@ app.get("/get-graph", (req, res) => {
     if (req.query.val === undefined) {
         res.send(JSON.stringify(graphData.getRandomGraphData()));
     } else {
-        console.log("get-graph-id backend with id, " + id)
         res.send(JSON.stringify(graphData.getGraphDataId(id)));
     }
 })
