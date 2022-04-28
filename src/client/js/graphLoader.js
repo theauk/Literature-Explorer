@@ -1,6 +1,10 @@
 // Track the last clicked node
 let lastClickedPaperId = null;
 
+const testTest = () => {
+    return true
+}
+
 // Fetch the initial graph data from the backend
 const getInitialGraph = () => {
     // API GET call to the backend
@@ -123,5 +127,6 @@ const createGraph = (graphData) => {
 }
 
 export {
-    getInitialGraph
+    getInitialGraph,
+    testTest
 }
