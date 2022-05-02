@@ -123,6 +123,5 @@ const createGraph = (graphData) => {
 }
 
 export {
-    getInitialGraph,
-    testTest
+    getInitialGraph
 }
