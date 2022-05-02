@@ -76,7 +76,7 @@ const createGraph = (graphData) => {
         edges: {
             width: 0.15,
             length: 240,
-        },
+        }
     };
 
     // Initialize the vis.js network
@@ -85,10 +85,6 @@ const createGraph = (graphData) => {
     // Handle single clicks on nodes
     network.on("click", function (params) {
         params.event = "[original event]";
-
-        // Show the sidebar when a node is clicked
-        const sidebar = document.getElementById("sidebar");
-        sidebar.style.width = "250px";
 
         // Update the sidebar with information about the clicked node
         const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
@@ -99,6 +95,10 @@ const createGraph = (graphData) => {
             document.getElementById("paper-year").innerText = "Year: ";
             document.getElementById("paper-references").innerText = "Number of references: ";
             document.getElementById("paper-description").innerText = "Description: ";
+
+            // Show the sidebar when a node is clicked
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.width = "250px";
         }
     });
 
