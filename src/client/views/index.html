@@ -5,9 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.2">
     <meta charset="utf-8">
     <title>Literature Explorer</title>
+    <script src="https://kit.fontawesome.com/d8a74f0c60.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+<div class="navigation">
+    <ul>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa-solid fa-house"></i></span>
+                <span class="title">Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                <span class="title">Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-question-circle" aria-hidden="true"></i></span>
+                <span class="title">Help</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-cog" aria-hidden="true"></i></span>
+                <span class="title">Settings</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-sign-in" aria-hidden="true"></i></span>
+                <span class="title">Login in</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="toggle" onclick="toggleMenu()"></div>
 
 <header>
     <div class="upperLeftHeader">
@@ -28,20 +64,7 @@
         <button class="btn" onclick="prev()">Prev</button>
         <button class="btn" onclick="next()">Next</button>
     </div>
-
-    <div class="menu">
-        <div class="menuButton" onclick="menuBarMorph(this)">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-        </div>
-    </div>
-
     <script>
-        function menuBarMorph(x) {
-            x.classList.toggle("change");
-        }
-
         function prev() {
         }
 
@@ -90,6 +113,10 @@
 
     function sidebarClose() {
         document.getElementById("sidebar").style.width = "0";
+    }
+    function toggleMenu() {
+    let navigation = document.querySelector('.navigation');
+    navigation.classList.toggle('active');
     }
 </script>
 <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
