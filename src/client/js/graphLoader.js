@@ -1,7 +1,7 @@
 // Fetch the graph data from the backend
-const getInitialGraph = () => {
+const getInitialGraph = async () => {
     // API GET call to the backend
-    fetch(`http://localhost:8080/get-graph`, {
+    await fetch(`http://localhost:8080/get-graph`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -11,7 +11,7 @@ const getInitialGraph = () => {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            console.log(data);
             createGraph(data);
         })
         .catch(error => console.log(error))
@@ -60,7 +60,7 @@ const createGraph =  (graphData) => {
                 face: "Helvetica",
             },
             color: {
-                border: '#000000',
+
                 background: '#ede9da',
                 border: '#87A980',
                 highlight: {
@@ -84,7 +84,7 @@ const createGraph =  (graphData) => {
 
         // Show the sidebar when a node is clicked
         const sidebar = document.getElementById("sidebar");
-        sidebar.style.width = "250px";
+        sidebar.style.width = "250px";graph
 
         // Update the sidebar with information about the clicked node 
         const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
