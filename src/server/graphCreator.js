@@ -11,24 +11,35 @@ var con = mysql.createConnection({
     database:'heroku_88b6712d7c7d5a4'
 
 });
-const myconnection = con.connect(function(err) {
-  if (err) {throw err;}
-  flag = true;
-  console.log("Connected!");
-});
+function myconnection () {
+    flag = true;
+    return new Promise (
+        resolve => {
+            con.connect((err) =>{
+                    if (err) throw err;
+                    console.log("connected")
+                    setTimeout(() => {resolve("yes")},5)
+                }
 
+            );
+        }
+    )
+}
 function fetchalledges (){
     let tempedges = [];
     return new Promise(resolve => {
-      con.query(`select source , destination from edge `, function (err2,result){
-        if (err2) throw err2 ;
-        Object.keys(result).forEach((key)=> tempedges.push(new Edge(key,result[key].source,result[key].destination)));     });
+      con.query(`select source , destination from edge `,  (err2,result)=>{
 
-        setTimeout(()=>{
-            resolve(tempedges);
-        } , 40
-        );
+          if (err2) throw err2 ;
+          Object.keys(result).forEach((key)=> tempedges.push(new Edge(key,result[key].source,result[key].destination)));
+          setTimeout (()=>{
+              resolve(tempedges)
+                  });})
+
+
+
     });
+
 }
 function fetchallnodes (){
     tempnodes = []
@@ -46,11 +57,16 @@ function fetchallnodes (){
 
     });});
 }
-const getRandomGraphData = async () => {
+async function getRandomGraphData()  {
    nodes = []
    edges = []
+    await myconnection();
+    console.log("hello")
     nodes = await fetchallnodes ();
+    console.log(nodes);
     edges = await fetchalledges();
+    console.log("edges " );
+    console.log(edges);
     return {
         nodes: nodes,
         edges: edges
@@ -109,7 +125,6 @@ async function getGraphDataId (title) { // the function takes the doi and return
     }
 
 }
-getGraphDataId('paper 1');
 module.exports = {
     getRandomGraphData,
     getGraphDataId
