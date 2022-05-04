@@ -18,7 +18,7 @@ const getInitialGraph = () => {
             lastClickedPaperId = data["mainPaper"].id
             createGraph(data);
             //graphData=data;
-            stack.push(0);
+            stack.push(data);
             //createGraph(data);
         })
         .catch(error => console.log(error))
@@ -52,6 +52,7 @@ const createGraph = (graphData) => {
         nodes: graphData['nodes'],
         edges: graphData['edges']
     };
+    stack.push(data);
 
     // Set the styling options
     const options = {
@@ -120,10 +121,12 @@ const createGraph = (graphData) => {
 
             network.setData(newData);
             graphData = newData;
+            console.log("graphdata" + graphData);
         }
         idx++;
+        console.log("index" + idx);
+        stack.push(graphData);
         lastClickedPaperId = paperClicked.id;
-        stack.push(paperClicked.id);
         console.log(paperClicked.id);
     });
     document.getElementById("prev").addEventListener("click",() => {console.log("prev");
@@ -131,16 +134,14 @@ const createGraph = (graphData) => {
     if (idx > 0)
     {
         idx=idx-1;
-        val=stack[idx];
-        console.log(val);
-        const newGraphData = getNodeDataById(val);
+        console.log("data" + stack[idx]);
+        const newGraphData=stack[idx];
         const newData = {
             nodes: newGraphData['nodes'],
             edges: newGraphData['edges']
         };
         network.setData(newData);
         graphData=newData;
-        lastClickedPaperId=val;
     }
     });
     document.getElementById("next").addEventListener("click",()=>{
@@ -148,17 +149,16 @@ const createGraph = (graphData) => {
     let val=lastClickedPaperId;
     if (idx < (stack.length-1))
     {
-        idx++;
+        idx = idx+1;
         val=stack[idx];
-        console.log(val);
-        const newGraphData = getNodeDataById(val);
-            const newData = {
+        console.log("next graph" + val);
+        const newGraphData = stack[idx];
+        const newData = {
                 nodes: newGraphData['nodes'],
                 edges: newGraphData['edges']
             };
         network.setData(newData);
         graphData=newData;
-        lastClickedPaperId=val;
     }
     });
 }
