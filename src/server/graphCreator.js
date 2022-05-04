@@ -31,7 +31,7 @@ const getGraphDataId = (id) => {
     nodes.push(mainNode);
     let numberOfNodes = Math.floor(Math.random() * 20) + 1;
 
-    for (let i = 0; i < numberOfNodes; i++) {
+    for (let i = 1; i < numberOfNodes; i++) {
         if (i != id) {
             let newNode = new Node(i, "Paper " + i);
             nodes.push(newNode);
@@ -45,6 +45,8 @@ const getGraphDataId = (id) => {
         edges: edges,
         mainPaper: mainNode
     }
+
+    
 };
 
 module.exports = {

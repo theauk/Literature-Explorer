@@ -1,5 +1,6 @@
 // Import external JS functions
-import { getInitialGraph } from './js/graphLoader'
+import {getInitialGraph } from './js/graphLoader';
+//import {getGraphDataprev } from './js/graphLoader';
 
 // Import the CSS style files
 import './styles/base.css'
@@ -12,3 +13,4 @@ import './styles/howto.css'
 
 // Display the graph
 getInitialGraph();
+//getGraphDataprev();
