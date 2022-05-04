@@ -30,7 +30,7 @@ app.listen(port,  ()=> console.log('App listening on port 8080!'));
 app.get("/get-graph", async (req, res) => {
     console.log("server get")
 
-    res.send(JSON.stringify(await graphData.getRandomGraphData() ));}) ;
+    res.send(JSON.stringify(await graphData.getInitialGraph() ));}) ;
 
 app.get("/getgraphbyID/:id", async (req,res)=>{
     console.log("entred serverID " + req.params.id) ;

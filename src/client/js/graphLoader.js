@@ -19,8 +19,8 @@ const getInitialGraph = async () => {
 
 const getNodeDataById = async (id) => {
     let returnData;
-    console.log(`http://localhost:8080/get-graph?val=${id}`);
-    await fetch(`http://localhost:8080/get-graph?val=${id}`, {
+    console.log("idofreq:"+ id) ;
+    await fetch(`http://localhost:8080/getgraphbyID/${id}`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -35,6 +35,7 @@ const getNodeDataById = async (id) => {
         })
         .catch(error => console.log(error));
 
+    console.log(returnData)
     return returnData;
 }
 const createGraph =  (graphData) => {
@@ -84,14 +85,14 @@ const createGraph =  (graphData) => {
 
         // Show the sidebar when a node is clicked
         const sidebar = document.getElementById("sidebar");
-        sidebar.style.width = "250px";graph
+        sidebar.style.width = "250px";
 
         // Update the sidebar with information about the clicked node 
         const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
         console.log(paperClicked);
         if (paperClicked != null) {
-            document.getElementById("paper-title").innerText = paperClicked['label'];
-            document.getElementById("paper-id").innerText = "ID " + paperClicked['id'];
+            document.getElementById("paper-title").innerText = "DOI : " +paperClicked['doi'];
+            document.getElementById("paper-id").innerText = "ID : " + paperClicked['label'];
         }
     });
     
@@ -99,7 +100,7 @@ const createGraph =  (graphData) => {
         params.event = "doubeclick"
         // get node data
         const paperClicked =  graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
-        const newGraphData = await getNodeDataById(paperClicked.id);
+        const newGraphData = await getNodeDataById(paperClicked.id); // here gets the data of new graph
         const newdata = {
             nodes: newGraphData['nodes'],
             edges: newGraphData['edges']
