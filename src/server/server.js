@@ -16,23 +16,26 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
     next();
 });
-
+// const port  = process.env.PORT ||  8080 ;
+const port = 8080;
 // Send the main page file to the frontend when the homepage is visited
 app.get('/', function (req, res) {
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
 // Listen for incoming requests on the server's port (8080)
-app.listen(8080, function () {
-    console.log('App listening on port 8080!')
-})
+app.listen(port,  ()=> console.log('App listening on port 8080!'));
 
 // Get the graph data when the front end makes a GET request to /get-graph
-app.get("/get-graph", (req, res) => {
-    const id = req.query.val;
-    if (req.query.val === undefined) {
-        res.send(JSON.stringify(graphData.getRandomGraphData()));
-    } else {
-        res.send(JSON.stringify(graphData.getGraphDataId(id)));
-    }
-})
+
+app.get("/get-graph", async (req, res) => {
+    console.log("server get")
+
+    res.send(JSON.stringify(await graphData.getInitialGraph() ));}) ;
+
+app.get("/getgraphbyID/:id", async (req,res)=>{
+    console.log("entred serverID " + req.params.id) ;
+    const results = await graphData.getGraphDataId(req.params.id);
+    res.send(JSON.stringify(results)) ;}
+);
+

@@ -2,9 +2,10 @@
 let lastClickedPaperId = null;
 
 // Fetch the initial graph data from the backend
-const getInitialGraph = () => {
+
+const getInitialGraph = async () => {
     // API GET call to the backend
-    fetch(`http://localhost:8080/get-graph`, {
+    await fetch(`http://localhost:8080/get-graph`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -14,30 +15,34 @@ const getInitialGraph = () => {
     })
         .then(response => response.json())
         .then(data => {
-            lastClickedPaperId = data["mainPaper"].id
+            lastClickedPaperId = data["mainPaper"].id;
+            console.log(data);
+// >>>>>>> fix-getgraphdataid
             createGraph(data);
         })
         .catch(error => console.log(error))
 }
 
 // Fetch a graph based on an id
-const getNodeDataById = async (id) => {
+async function getNodeDataById (id) {
     let returnData;
-    await fetch(`http://localhost:8080/get-graph?val=${id}`, {
+    console.log("hello")
+    console.log("idofreq:"+ id) ;
+    await fetch(`http://localhost:8080/getgraphbyID/${id}`, {
         method: "GET",
         mode: "cors",
         headers: {
             "Access-Control-Allow-Origin": "*",
             "Content-type": "application/json"
         }
-    })
-        .then(response => response.json())
+    }).then(response => response.json())
         .then(data => {
             lastClickedPaperId = id;
             returnData = data;
         })
         .catch(error => console.log(error));
 
+    console.log(returnData)
     return returnData;
 }
 
@@ -64,7 +69,7 @@ const createGraph = (graphData) => {
                 face: "Helvetica",
             },
             color: {
-                border: '#000000',
+
                 background: '#ede9da',
                 border: '#87A980',
                 highlight: {
@@ -93,28 +98,30 @@ const createGraph = (graphData) => {
         // Update the sidebar with information about the clicked node
         const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
         if (paperClicked != null) {
-            document.getElementById("paper-title").innerText = paperClicked['label'];
-            document.getElementById("paper-id").innerText = "ID " + paperClicked['id'];
-            document.getElementById("paper-authors").innerText = "Authors: ";
-            document.getElementById("paper-year").innerText = "Year: ";
+            document.getElementById("paper-id").innerText = "DOI :  " + paperClicked['doi'];
+            document.getElementById("paper-authors").innerText = "Authors: " + paperClicked['authors'];
+            document.getElementById("paper-year").innerText = "date : " +paperClicked['date'];
             document.getElementById("paper-references").innerText = "Number of references: ";
-            document.getElementById("paper-description").innerText = "Description: ";
+            document.getElementById("paper-description").innerText = "Description:  ";
+            document.getElementById("paper-title").innerText = "Title : " +paperClicked['label'];
+
         }
     });
 
     // Handle double clicks
     network.on("doubleClick", async function (params) {
+// <<<<<<< HEAD
         params.event = "doubleClick"
-
         // Get node data
         const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
-        if (lastClickedPaperId != paperClicked.id) {
+
+
+        if (lastClickedPaperId !== paperClicked.id) {
             const newGraphData = await getNodeDataById(paperClicked.id);
             const newData = {
                 nodes: newGraphData['nodes'],
                 edges: newGraphData['edges']
             };
-
             network.setData(newData);
             graphData = newData;
         }
@@ -122,6 +129,4 @@ const createGraph = (graphData) => {
     });
 }
 
-export {
-    getInitialGraph
-}
+export {getInitialGraph}
