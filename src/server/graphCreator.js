@@ -109,7 +109,7 @@ async function getInitialGraph() {
     }
 }
 
-function fetchMainNode(title) {
+function fetchMainNode(title) { // TODO what if two papers have the same title??? ID should probably be used instead
     return new Promise(
         resolve => {
             connection.query(`select *
@@ -128,7 +128,7 @@ function fetchMainNode(title) {
         });
 }
 
-async function fetchConnectedNodes(mainNodeTitle) {
+async function fetchConnectedNodes(mainNodeTitle) { // TODO same as above
     return new Promise(
         async resolve => {
             connection.query(`select *
