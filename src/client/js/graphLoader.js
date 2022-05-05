@@ -119,15 +119,12 @@ const createGraph = (graphData) => {
             stack[idx] = graphData;
             stack = stack.slice(0, idx + 1);
         }
-        console.log("index" + idx);
         lastClickedPaperId = paperClicked.id;
-        console.log(paperClicked.id);
     });
+
     document.getElementById("prev").addEventListener("click", () => {
-        console.log("prev");
         if (idx - 1 >= 0) {
             idx = idx - 1;
-            console.log("data" + stack[idx]);
             const newGraphData = stack[idx];
             const newData = {
                 nodes: newGraphData['nodes'],
@@ -137,11 +134,9 @@ const createGraph = (graphData) => {
             network.setData(newData);
             graphData = newData;
             lastClickedPaperId = graphData['mainPaper'].id;
-            console.log("last clicked" + lastClickedPaperId)
         }
     });
     document.getElementById("next").addEventListener("click", () => {
-        console.log("next");
         if ((idx + 1) < (stack.length)) {
             idx = idx + 1;
             const newGraphData = stack[idx];
@@ -153,7 +148,6 @@ const createGraph = (graphData) => {
             network.setData(newData);
             graphData = newData;
             lastClickedPaperId = graphData['mainPaper'].id;
-            console.log("last clicked" + lastClickedPaperId)
         }
     });
 }
