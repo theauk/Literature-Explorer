@@ -1,20 +1,21 @@
-.slider{
-	display:flex;
-	
-}
-.btn{
-	border:none;
-	outline:none;
-	background:#ede9da;
-	font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-	color:rgb(76, 70, 70);
-	cursor: pointer;
-	margin-left: 10px;
-	width: 60px;
-    height: 25px;
-	display: flex;			 
+.slider {
+    display: flex;
+    justify-content: center;
 }
 
-.btn:hover{
-	background: rgb(181, 181, 146);
+.btn {
+    border: none;
+    outline: none;
+    background: #ede9da;
+    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: rgb(76, 70, 70);
+    cursor: pointer;
+    margin-left: 10px;
+    width: 60px;
+    height: 25px;
+    display: flex;
+}
+
+.btn:hover {
+    background: rgb(181, 181, 146);
 }

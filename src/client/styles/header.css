@@ -1,12 +1,14 @@
 header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 10px 40px;
     background-color: #87A980;
-    
+    height: 28px;
     font: 22px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 .logo {
     color: #ede9da;
+    float: left;
+    width: 100%;
 }

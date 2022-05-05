@@ -5,34 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.2">
     <meta charset="utf-8">
     <title>Literature Explorer</title>
+    <script src="https://kit.fontawesome.com/d8a74f0c60.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+<div class="navigation">
+    <ul>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa-solid fa-house"></i></span>
+                <span class="title">Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                <span class="title">Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-question-circle" aria-hidden="true"></i></span>
+                <span class="title">Help</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-cog" aria-hidden="true"></i></span>
+                <span class="title">Settings</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon"><i class="fa fa-sign-in" aria-hidden="true"></i></span>
+                <span class="title">Login in</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="toggle" onclick="toggleMenu()"></div>
 
 <header>
-    <div class="logo">
-        <i><b>Literature Explorer</b></i>
+    <div class="upperLeftHeader">
+        <div class="popup" onclick="openPopup()"><b>?</b>
+            <span class="popup-text" id="myPopup">Welcome to the literature explorer! <br>
+                Click on a node to learn more about the paper, <br>
+                or double-click on a node to generate its graph.
+                <br> <br>
+                Click anywhere on this pop-up to close it.
+            </span>
+        </div>
+        <div class="logo">
+            <i><b>Literature Explorer</b></i>
+        </div>
     </div>
+
     <div class="slider">
-        <button class="btn" onclick="prev()">Prev</button>
-        <button class="btn" onclick="next()">Next</button>
+        <button id="prev" class="btn">Prev</button>
+        <button id="next" class="btn">Next</button>
     </div>
-    <div class="container" onclick="myFunction(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-    </div>
-
     <script>
-        function myFunction(x) {
-            x.classList.toggle("change");
-        }
-
-        function prev() {
-        }
-
-        function next() {
-        }
     </script>
 </header>
 
@@ -42,18 +74,44 @@
     </section>
     <section>
         <div id="sidebar">
-            <button id="cbtn" class="closebtn" onclick="sidebarclose()">close</button>
+            <button id="cbtn" class="closebtn" onclick="sidebarClose()">close</button>
+            <button id="View-this-paper" class="view">View this paper</button>
+            <button id="Cite-this-paper" class="cite">Cite this paper</button>
             <div class="paper-info">
-                <div id="paper-title"></div>
+                <h1>
+                    <div id="paper-title"></div>
+                </h1>
+                <p>
                 <div id="paper-id"></div>
+                </p>
+                <p>
+                <div id="paper-authors"></div>
+                </p>
+                <p>
+                <div id="paper-year"></div>
+                </p>
+                <p>
+                <div id="paper-references"></div>
+                </p>
+                <p>
+                <div id="paper-description"></div>
+                </p>
             </div>
         </div>
     </section>
 </main>
 <script>
-    function sidebarclose() {
+    function openPopup() {
+        const popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+
+    function sidebarClose() {
         document.getElementById("sidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
+    }
+    function toggleMenu() {
+    let navigation = document.querySelector('.navigation');
+    navigation.classList.toggle('active');
     }
 </script>
 <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>

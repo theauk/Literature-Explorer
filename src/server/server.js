@@ -18,6 +18,7 @@ app.use(function (req, res, next) {
 });
 // const port  = process.env.PORT ||  8080 ;
 const port = 8080;
+
 // Send the main page file to the frontend when the homepage is visited
 app.get('/', function (req, res) {
     res.sendFile(path.resolve('src/client/views/index.html'))
