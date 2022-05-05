@@ -9,4 +9,5 @@ class Edge {
         this.to = to;
     }
 }
+
 module.exports = Edge;

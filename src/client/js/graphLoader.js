@@ -1,10 +1,10 @@
 // Track the last clicked node
 let lastClickedPaperId = null;
 var stack = [];
-let idx=0;
+let idx = 0;
 
 // Fetch the graph data from the backend
-const getInitialGraph = () => {
+const getInitialGraph = async () => {
     // API GET call to the backend
     await fetch(`http://localhost:8080/get-graph`, {
         method: "GET",
@@ -16,7 +16,7 @@ const getInitialGraph = () => {
     })
         .then(response => response.json())
         .then(data => {
-            lastClickedPaperId = data["mainPaper"].id
+            lastClickedPaperId = data["nodes"][0].id
             createGraph(data);
             stack.push(data);
         })
@@ -94,7 +94,7 @@ const createGraph = (graphData) => {
         // Update the sidebar with information about the clicked node
         const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
         if (paperClicked != null) {
-            document.getElementById("paper-title").innerText = "DOI : " +paperClicked['doi'];
+            document.getElementById("paper-title").innerText = "DOI : " + paperClicked['doi'];
             document.getElementById("paper-id").innerText = "ID : " + paperClicked['label'];
         }
     });
@@ -116,36 +116,18 @@ const createGraph = (graphData) => {
             network.setData(newData);
             graphData = newData;
             idx++;
-            stack[idx]=graphData;
-            stack=stack.slice(0,idx+1);
+            stack[idx] = graphData;
+            stack = stack.slice(0, idx + 1);
         }
         console.log("index" + idx);
         lastClickedPaperId = paperClicked.id;
         console.log(paperClicked.id);
     });
-    document.getElementById("prev").addEventListener("click",() => {console.log("prev");
-        if (idx-1 >= 0)
-        {
-            idx=idx-1;
+    document.getElementById("prev").addEventListener("click", () => {
+        console.log("prev");
+        if (idx - 1 >= 0) {
+            idx = idx - 1;
             console.log("data" + stack[idx]);
-            const newGraphData=stack[idx];
-            const newData = {
-                nodes: newGraphData['nodes'],
-                edges: newGraphData['edges'],
-                mainPaper: newGraphData['mainPaper']
-            };
-            network.setData(newData);
-            graphData=newData;
-            const paperClicked = graphData['mainPaper'].id;
-            lastClickedPaperId = paperClicked;
-            console.log("last clicked"+ lastClickedPaperId)
-        }
-    });
-    document.getElementById("next").addEventListener("click",()=>{
-        console.log("next");
-        if ((idx+1) < (stack.length))
-        {
-            idx = idx+1;
             const newGraphData = stack[idx];
             const newData = {
                 nodes: newGraphData['nodes'],
@@ -153,10 +135,25 @@ const createGraph = (graphData) => {
                 mainPaper: newGraphData['mainPaper']
             };
             network.setData(newData);
-            graphData=newData;
-            const paperClicked = graphData['mainPaper'].id;
-            lastClickedPaperId = paperClicked;
-            console.log("last clicked"+ lastClickedPaperId)
+            graphData = newData;
+            lastClickedPaperId = graphData['mainPaper'].id;
+            console.log("last clicked" + lastClickedPaperId)
+        }
+    });
+    document.getElementById("next").addEventListener("click", () => {
+        console.log("next");
+        if ((idx + 1) < (stack.length)) {
+            idx = idx + 1;
+            const newGraphData = stack[idx];
+            const newData = {
+                nodes: newGraphData['nodes'],
+                edges: newGraphData['edges'],
+                mainPaper: newGraphData['mainPaper']
+            };
+            network.setData(newData);
+            graphData = newData;
+            lastClickedPaperId = graphData['mainPaper'].id;
+            console.log("last clicked" + lastClickedPaperId)
         }
     });
 }
