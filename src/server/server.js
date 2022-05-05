@@ -43,9 +43,6 @@ app.get("/getgraphbyID/:id", async (req, res) => {
     }
 );
 
-
-})
-
 // Endpoint for testing the server connection
 app.get('/test', function (req, res) {
     res.send({"message" : "working"});
