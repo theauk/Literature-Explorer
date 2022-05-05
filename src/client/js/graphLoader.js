@@ -87,15 +87,15 @@ const createGraph = (graphData) => {
     network.on("click", function (params) {
         params.event = "[original event]";
 
-        // Show the sidebar when a node is clicked
-        const sidebar = document.getElementById("sidebar");
-        sidebar.style.width = "250px";
-
         // Update the sidebar with information about the clicked node
         const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
         if (paperClicked != null) {
             document.getElementById("paper-title").innerText = "DOI : " + paperClicked['doi'];
             document.getElementById("paper-id").innerText = "ID : " + paperClicked['label'];
+
+            // Show the sidebar when a node is clicked
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.width = "250px";
         }
     });
 

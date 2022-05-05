@@ -17,16 +17,20 @@ app.use(function (req, res, next) {
     next();
 });
 
-// const port  = process.env.PORT ||  8080 ;
-const port = 8080;
-
 // Send the main page file to the frontend when the homepage is visited
 app.get('/', function (req, res) {
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
 // Listen for incoming requests on the server's port (8080)
-app.listen(port, () => console.log('App listening on port 8080!'));
+const port = 8080;
+const server = app.listen(port, function (err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(`Listening on port: ${port}`);
+    }
+});
 
 // Get the graph data when the front end makes a GET request to /get-graph
 app.get("/get-graph", async (req, res) => {
@@ -39,3 +43,12 @@ app.get("/getgraphbyID/:id", async (req, res) => {
     }
 );
 
+
+})
+
+// Endpoint for testing the server connection
+app.get('/test', function (req, res) {
+    res.send({"message" : "working"});
+})
+
+module.exports = { server };
