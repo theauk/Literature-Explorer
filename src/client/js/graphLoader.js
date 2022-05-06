@@ -90,8 +90,11 @@ const createGraph = (graphData) => {
         // Update the sidebar with information about the clicked node
         const paperClicked = graphData['nodes'].find(element => element['id'] == this.getNodeAt(params.pointer.DOM));
         if (paperClicked != null) {
-            document.getElementById("paper-title").innerText = "DOI : " + paperClicked['doi'];
-            document.getElementById("paper-id").innerText = "ID : " + paperClicked['label'];
+            document.getElementById("paper-title").innerText = paperClicked['label'];
+            document.getElementById("paper-authors").innerHTML = "<b>Author(s): </b>" + paperClicked['authors'];
+            document.getElementById("paper-date").innerHTML = "<b>Date Published: </b>" + paperClicked['date'];
+            document.getElementById("paper-journal").innerHTML = "<b>Journal: </b>" + paperClicked['journal'];
+            document.getElementById("paper-doi").innerHTML = "<b>DOI: </b>" + paperClicked['doi'];
 
             // Show the sidebar when a node is clicked
             const sidebar = document.getElementById("sidebar");
