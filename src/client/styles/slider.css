@@ -1,6 +1,7 @@
 .slider {
     display: flex;
     justify-content: center;
+    position:relative;
 }
 
 .btn {
@@ -15,7 +16,79 @@
     height: 25px;
     display: flex;
 }
+.btn2 {
+    border: none;
+    outline: none;
+    background: #ede9da;
+    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: rgb(76, 70, 70);
+    cursor: pointer;
+    margin-left: 10px;
+    width: 190px;
+    height: 25px;
+    display: flex;
+    align-content: center;
+    display: flex;
 
+}
+
+.btn2:hover {
+    background: rgb(181, 181, 146);
+}
 .btn:hover {
     background: rgb(181, 181, 146);
 }
+.hidden {
+    display: none;
+}
+.show {
+   display: inline;
+   border: none;
+    outline: none;
+    background: #ede9da;
+    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+    color: rgb(76, 70, 70);
+    cursor: pointer;
+    margin-left: 10px;
+    width: 160px;
+    height: 25px;
+    display: flex;
+    align-content: center;
+    display: flex;
+}
+.show:hover {
+    background: rgb(181, 181, 146);
+}
+.editmode1 {
+    display: inline;
+    border: none;
+     outline: none;
+     background: #ede9da;
+     font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+     color: rgb(76, 70, 70);
+     cursor: pointer;
+     margin-left: 10px;
+     width: 180px;
+     height: 25px;
+     display: flex;
+     align-content: center;
+     display: flex;
+ }
+ .editmode1:hover {
+    background: rgb(181, 181, 146);
+ }
+ .editmode2 {
+    display: inline;
+    border: none;
+     outline: none;
+     background: rgb(181, 181, 146);
+     font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+     color: rgb(76, 70, 70);
+     cursor: pointer;
+     margin-left: 10px;
+     width: 180px;
+     height: 25px;
+     display: flex;
+     align-content: center;
+     display: flex;
+ }

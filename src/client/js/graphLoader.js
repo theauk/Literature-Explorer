@@ -47,12 +47,13 @@ const getNodeDataById = async (id) => {
 const createGraph = (graphData) => {
 
     // Create a network and the data
+
     const container = document.getElementById('graph');
     const data = {
         nodes: graphData['nodes'],
         edges: graphData['edges']
     };
-
+    const allNodes = data;
     // Set the styling options
     const options = {
         nodes: {
@@ -75,9 +76,34 @@ const createGraph = (graphData) => {
             },
         },
         edges: {
-            width: 0.15,
+            width: 1,
             length: 240,
         },
+        manipulation: {
+            enabled: false,
+              addNode: function (data, callback) {
+                  // filling in the popup DOM elements
+                  console.log('add', data);
+              },
+              editNode: function (data, callback) {
+                  // filling in the popup DOM elements
+                  console.log('edit', data);
+              },
+              addEdge: function (data, callback) {
+                  console.log('add edge', data);
+                  if (data.from == data.to) {
+                      var r = confirm("Do you want to connect the node to itself?");
+                      if (r === true) {
+                          callback(data);
+                      }
+                  }
+                  else {
+                      callback(data);
+                  };
+                  console.log("edges list new" + network.body.data["edges"].length);
+                  network.addEdgeMode();
+              }
+          }
     };
 
     // Initialize the vis.js network
@@ -149,6 +175,85 @@ const createGraph = (graphData) => {
             graphData = newData;
             lastClickedPaperId = graphData['mainPaper'].id;
         }
+    });
+    document.getElementById("userGraph").addEventListener("click", () => {
+        let user_data = {
+            nodes: allNodes["nodes"],
+            edges: []
+        };
+        let currData = {nodes: [], edges: []};
+        function toggleButton(id, on_off, Class=null) {
+            if (on_off == true){
+                document.getElementById(id).className = Class; 
+            }else{
+                document.getElementById(id).className = "show"; 
+            }
+        };
+        network.setData(currData);
+        // set prev and next to hidden and show exit button
+        toggleButton("Exit", false);
+        toggleButton("userGraph", true, "hidden");
+        toggleButton("prev", true, "hidden")
+        toggleButton("next", true, "hidden");
+        toggleButton("nodes", false);
+        toggleButton("editmode", true, "editmode1");
+        var selector = document.getElementById("nodes");
+        user_data.nodes.forEach(node => {
+            var option = document.createElement("option");
+            
+            option.value = node.id;
+            option.innerHTML = node.id;
+            selector.appendChild(option);
+        });
+
+        
+        document.getElementById("nodes").addEventListener("change", (event) => {
+            const val = document.getElementById("nodes").value;
+            var node = user_data.nodes.find(node => node.id == val);
+            currData["nodes"].push(node);
+            currData["edges"] = network.body.data["edges"];
+            toggleButton("editmode", true, "editmode1");
+            network.setData(currData);
+            
+        });
+        let flag = false;
+        network.disableEditMode();
+        function editmode(){
+            //toggleButton("editmode", false, "editmode");
+            if (currData["nodes"].length >=2 && flag == false){
+                network.addEdgeMode();
+                console.log("edit mode enabled");
+                toggleButton("editmode", true, "editmode2");
+                flag = true;
+                console.log("edges list new" + network.body.data["edges"]);
+            }else{
+                toggleButton("editmode", true, "editmode1");
+                network.disableEditMode();
+                flag = false;
+            };
+        }
+        document.getElementById("editmode").addEventListener("click", () => {
+        console.log("edit mode selected");
+        editmode();
+        });
+        document.getElementById("Exit").addEventListener("click", () => {
+        toggleButton("Exit", true, "hidden");
+        toggleButton("prev", true, "btn");
+        toggleButton("next", true, "btn");
+        toggleButton("userGraph", true, "btn2");
+        toggleButton("nodes", true, "hidden");
+        toggleButton("editmode", true, "hidden");
+        network.setData(allNodes);
+    });
+        
+
+
+
+
+
+
+        console.log("done");
+        // network.setData(allNodes);
     });
 }
 
