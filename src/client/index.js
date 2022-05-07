@@ -1,5 +1,5 @@
 // Import external JS functions
-import { getInitialGraph } from './js/graphLoader'
+import {getInitialGraph } from './js/graphLoader';
 
 // Import the CSS style files
 import './styles/base.css'

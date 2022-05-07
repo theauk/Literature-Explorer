@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.2">
     <meta charset="utf-8">
     <title>Literature Explorer</title>
     <script src="https://kit.fontawesome.com/d8a74f0c60.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
+<header>
+    <div class="upperLeftHeader">
+        <div class="popup" onclick="openPopup()"><b>?</b>
+            <span class="popup-text" id="myPopup">Welcome to the literature explorer! <br>
+                Click on a node to learn more about the paper, <br>
+                or double-click on a node to generate its graph.
+                <br> <br>
+                Click anywhere on this pop-up to close it.
+            </span>
+        </div>
+        <div class="logo">
+            <i><b>Literature Explorer</b></i>
+        </div>
+    </div>
+
+    <div class="slider">
+        <button id="prev" class="btn">Prev</button>
+        <button id="next" class="btn">Next</button>
+    </div>
+    <script>
+    </script>
+</header>
+<div id="graph"></div>
 <div class="navigation">
     <ul>
         <li>
@@ -36,47 +57,16 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="http://localhost:63342/Literature-Explorer/src/client/views/Register.html">
                 <span class="icon"><i class="fa fa-sign-in" aria-hidden="true"></i></span>
-                <span class="title">Login in</span>
+                <span class="title">Log in</span>
             </a>
         </li>
     </ul>
 </div>
 <div class="toggle" onclick="toggleMenu()"></div>
 
-<header>
-    <div class="upperLeftHeader">
-        <div class="popup" onclick="openPopup()"><b>?</b>
-            <span class="popup-text" id="myPopup">Welcome to the literature explorer! <br>
-                Click on a node to learn more about the paper, <br>
-                or double-click on a node to generate its graph.
-                <br> <br>
-                Click anywhere on this pop-up to close it.
-            </span>
-        </div>
-        <div class="logo">
-            <i><b>Literature Explorer</b></i>
-        </div>
-    </div>
-
-    <div class="slider">
-        <button class="btn" onclick="prev()">Prev</button>
-        <button class="btn" onclick="next()">Next</button>
-    </div>
-    <script>
-        function prev() {
-        }
-
-        function next() {
-        }
-    </script>
-</header>
-
 <main>
-    <section>
-        <div id="graph"></div>
-    </section>
     <section>
         <div id="sidebar">
             <button id="cbtn" class="closebtn" onclick="sidebarClose()">close</button>
@@ -93,10 +83,13 @@
                 <div id="paper-authors"></div>
                 </p>
                 <p>
-                <div id="paper-year"></div>
+                <div id="paper-date"></div>
                 </p>
                 <p>
-                <div id="paper-references"></div>
+                <div id="paper-journal"></div>
+                </p>
+                <p>
+                <div id="paper-doi"></div>
                 </p>
                 <p>
                 <div id="paper-description"></div>
@@ -110,16 +103,16 @@
         const popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
     }
-
     function sidebarClose() {
         document.getElementById("sidebar").style.width = "0";
     }
     function toggleMenu() {
-    let navigation = document.querySelector('.navigation');
-    navigation.classList.toggle('active');
+        let navigation = document.querySelector('.navigation');
+        navigation.classList.toggle('active');
+        let toggle = document.querySelector('.toggle');
+        toggle.classList.toggle('active');
     }
 </script>
 <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
 </body>
-
 </html>

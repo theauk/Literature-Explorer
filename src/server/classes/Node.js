@@ -1,12 +1,13 @@
 class Node {
-    constructor(label, doi, journal,date, authors) {
-        this.label =label;
+
+    constructor(label, doi, journal, date, authors) {
+        this.label = label;
         this.doi = doi;
-        this.id=this.label
+        this.id = this.label // TODO why are label and ID the same???
         this.journal = journal;
-        this.date= (date.toString()).substring(4,15);
-        console.log(this.date)
+        this.date = date;
         this.authors = authors; // an array of authors
     }
 }
+
 module.exports = Node;
