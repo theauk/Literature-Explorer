@@ -8,7 +8,7 @@ app.use(express.static('dist'))
 // Get the graph information from the external file
 let graphData = require("./graphCreator");
 
-// For cross-origin allowance (so that the API works correctly)
+// For cross-origin allowance
 app.use(cors());
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -32,11 +32,12 @@ const server = app.listen(port, function (err) {
     }
 });
 
-// Get the graph data when the front end makes a GET request to /get-graph
+// Get graph data for a general graph
 app.get("/get-graph", async (req, res) => {
     res.send(JSON.stringify(await graphData.getInitialGraph()));
 });
 
+// Get graph data for a graph with a specific ID
 app.get("/getgraphbyID/:id", async (req, res) => {
         const results = await graphData.getGraphDataId(req.params.id);
         res.send(JSON.stringify(results));
@@ -45,7 +46,7 @@ app.get("/getgraphbyID/:id", async (req, res) => {
 
 // Endpoint for testing the server connection
 app.get('/test', function (req, res) {
-    res.send({"message" : "working"});
+    res.send({"message": "working"});
 })
 
-module.exports = { server };
+module.exports = {server};
