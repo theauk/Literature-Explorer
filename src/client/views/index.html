@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=0.2">
     <meta charset="utf-8">
@@ -18,7 +20,7 @@
             </span>
         </div>
         <div class="logo">
-            <i><b>Literature Explorer</b></i>
+            <b>Literature Explorer</b>
         </div>
     </div>
 
@@ -73,12 +75,14 @@
 <main>
     <section>
         <div id="sidebar">
-            <button id="cbtn" class="closebtn" onclick="sidebarClose()">close</button>
-            <button id="View-this-paper" class="view">View this paper</button>
-            <button id="Cite-this-paper" class="cite">Cite this paper</button>
+            <button id="cbtn" class="closebtn" onclick="sidebarClose()"> <span style = "font-family: 'Playfair Display', serif; font-size: 18px;" > 
+                <span class="icon"><i class="fas fa-arrow-alt-circle-right fa-xl" aria-hidden="true"></i></span>
+                <span class="title"></span></span></button>
+            <button id="View-this-paper" class="view"> <span style = "font-family: 'Playfair Display', serif; font-size: 22px;" >View this paper</span></button>
+            <button id="Cite-this-paper" class="cite"> <span style = "font-family: 'Playfair Display', serif; font-size: 22px;" >Cite this paper</span></button>
             <div class="paper-info">
                 <h1>
-                    <div id="paper-title"></div>
+                    <span style = "font-family: 'Playfair Display', serif; font-size: xx-large;" ><div id="paper-title"></div></span>
                 </h1>
                 <p>
                 <div id="paper-id"></div>

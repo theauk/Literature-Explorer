@@ -7,9 +7,11 @@
 .btn {
     border: none;
     outline: none;
-    background: #ede9da;
-    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-    color: rgb(76, 70, 70);
+    background: #555e4b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #ede9da;
     cursor: pointer;
     margin-left: 10px;
     width: 60px;
@@ -19,9 +21,11 @@
 .btn2 {
     border: none;
     outline: none;
-    background: #ede9da;
-    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-    color: rgb(76, 70, 70);
+    background: #555e4b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #ede9da;
     cursor: pointer;
     margin-left: 10px;
     width: 190px;
@@ -45,9 +49,10 @@
    display: inline;
    border: none;
     outline: none;
-    background: #ede9da;
-    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-    color: rgb(76, 70, 70);
+    background: #555e4b;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    color:#ede9da;
     cursor: pointer;
     margin-left: 10px;
     width: 160px;
@@ -63,9 +68,10 @@
     display: inline;
     border: none;
      outline: none;
-     background: #ede9da;
-     font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-     color: rgb(76, 70, 70);
+     background: #555e4b;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+    color:#ede9da;
      cursor: pointer;
      margin-left: 10px;
      width: 180px;
@@ -81,7 +87,7 @@
     display: inline;
     border: none;
      outline: none;
-     background: rgb(181, 181, 146);
+     background: #555e4b;
      font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
      color: rgb(76, 70, 70);
      cursor: pointer;

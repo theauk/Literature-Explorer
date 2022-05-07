@@ -6,7 +6,8 @@
     z-index: 1;
     padding-top: 20px;
     background-color: #ede9da;
-    font: 16px Georgia, serif;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
     right: 0;
     top: 48px;
     transition: 0.5s;
@@ -15,24 +16,26 @@
 .paper-info {
     margin-top: 30px;
     margin-left: 20px;
-    font: 16px Bookman, URW Bookman L, serif;
-    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
 }
 
+
 .closebtn {
-    border: 1px solid #87A980;
-    border-radius: 15%;
+    border-color: #0000;
     outline: none;
-    background: #87A980;
-    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-    color: #ede9da;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    background-color: #0000;
+    color: #555e4b;
     cursor: pointer;
-    margin-left: 20px;
-    width: 60px;
-    height: 25px;
+    margin-left: 16px;
+    width: 35px;
+    height: 30px;
     display: flex;
     position: absolute;
 }
+
 
 .closebtn:hover {
     background: rgb(181, 181, 146);
@@ -40,11 +43,9 @@
 
 .view, .cite {
     border: 2px solid #87A980;
-    border-radius: 15%;
     outline: none;
-    background: #87A980;
-    font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
-    color: #ede9da;
+    background: #bfaf8d;
+    color: black;
     cursor: pointer;
     margin-left: 20px;
     width: 170px;
