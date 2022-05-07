@@ -108,7 +108,34 @@ const createGraph = (graphData) => {
 
     // Initialize the vis.js network
     let network = new vis.Network(container, data, options);
-
+    
+    function toggleButton(id, on_off, Class=null) {
+        if (on_off == true){
+            document.getElementById(id).className = Class; 
+        }else{
+            document.getElementById(id).className = "show"; 
+        }
+    };
+    function check_next(){
+        if(idx > 0 && idx <stack.length-1){
+            toggleButton("next", true, "btn");
+        }else{
+            if(idx == 0){
+                toggleButton("next", true, "btn");
+            }else{
+                toggleButton("next", true, "hidden");
+            };
+            
+        }
+    }
+    function check_prev(){
+        if(idx > 0){
+            toggleButton("prev", true, "btn");
+        }else{
+            toggleButton("prev", true, "hidden");
+        };
+    };
+    
     // Handle single clicks on nodes
     network.on("click", function (params) {
         params.event = "[original event]";
@@ -145,6 +172,8 @@ const createGraph = (graphData) => {
             stack[idx] = graphData;
             stack = stack.slice(0, idx + 1);
         }
+        check_prev();
+        check_next();
         lastClickedPaperId = paperClicked.id;
     });
 
@@ -159,8 +188,10 @@ const createGraph = (graphData) => {
             };
             network.setData(newData);
             graphData = newData;
-            lastClickedPaperId = graphData['mainPaper'].id;
+            //lastClickedPaperId = graphData['mainPaper'].id;
         }
+        check_prev();
+        check_next();
     });
     document.getElementById("next").addEventListener("click", () => {
         if ((idx + 1) < (stack.length)) {
@@ -173,8 +204,10 @@ const createGraph = (graphData) => {
             };
             network.setData(newData);
             graphData = newData;
-            lastClickedPaperId = graphData['mainPaper'].id;
-        }
+            //lastClickedPaperId = graphData['mainPaper'].id;
+        };
+        check_next();
+        check_prev();
     });
     document.getElementById("userGraph").addEventListener("click", () => {
         let user_data = {
@@ -182,13 +215,6 @@ const createGraph = (graphData) => {
             edges: []
         };
         let currData = {nodes: [], edges: []};
-        function toggleButton(id, on_off, Class=null) {
-            if (on_off == true){
-                document.getElementById(id).className = Class; 
-            }else{
-                document.getElementById(id).className = "show"; 
-            }
-        };
         network.setData(currData);
         // set prev and next to hidden and show exit button
         toggleButton("Exit", false);
@@ -222,10 +248,8 @@ const createGraph = (graphData) => {
             //toggleButton("editmode", false, "editmode");
             if (currData["nodes"].length >=2 && flag == false){
                 network.addEdgeMode();
-                console.log("edit mode enabled");
                 toggleButton("editmode", true, "editmode2");
                 flag = true;
-                console.log("edges list new" + network.body.data["edges"]);
             }else{
                 toggleButton("editmode", true, "editmode1");
                 network.disableEditMode();
@@ -233,27 +257,17 @@ const createGraph = (graphData) => {
             };
         }
         document.getElementById("editmode").addEventListener("click", () => {
-        console.log("edit mode selected");
         editmode();
         });
         document.getElementById("Exit").addEventListener("click", () => {
         toggleButton("Exit", true, "hidden");
-        toggleButton("prev", true, "btn");
-        toggleButton("next", true, "btn");
+        toggleButton("prev", true, "hidden");
+        toggleButton("next", true, "hidden");
         toggleButton("userGraph", true, "btn2");
         toggleButton("nodes", true, "hidden");
         toggleButton("editmode", true, "hidden");
         network.setData(allNodes);
     });
-        
-
-
-
-
-
-
-        console.log("done");
-        // network.setData(allNodes);
     });
 }
 
