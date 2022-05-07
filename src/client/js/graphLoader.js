@@ -269,7 +269,9 @@ const createGraph = (graphData) => {
         toggleButton("userGraph", true, "btn2");
         toggleButton("nodes", true, "hidden");
         toggleButton("editmode", true, "hidden");
+        document.getElementById("nodes").innerHTML = '';
         network.setData(allNodes);
+        
     });
     });
 }
