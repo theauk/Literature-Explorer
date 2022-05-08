@@ -151,7 +151,6 @@ const createGraph = (graphData) => {
             // Show the sidebar when a node is clicked
             const sidebar = document.getElementById("sidebar");
             sidebar.style.width = "250px";
-            document.getElementById("closebtn").style.display = "none"; 
         }
     });
 
